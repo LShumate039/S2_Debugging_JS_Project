@@ -57,7 +57,7 @@ function verifyCrops() {
     try {
         for (var i = 0; i < 7; i++) {
             if (cropsFieldset.getElementsByTagName("input")[i].checked) {
-                cropscomplete = true;
+                cropsComplete = true;
                 messageElement.innerHTML = "";
                 testFormCompleteness();
                 i = 8;
@@ -77,27 +77,24 @@ function verifyCrops() {
 /* verify months text box entry is between 1 and 12 */
 function verifyMonths() {
     /* verify months text box entry is between 1 and 12 */
-    {
-        var validity = true;
-        var messageText = "";
-        try {
-            if (!(monthsBox.value >= 1 && monthsBox.value <= 12)) {
-                throw "Please enter a number of months between 1 and 12.";
-            }
-        } catch (message) {
-            validity = false;
-            messageText = message;
-            // remove erroneous entry from input box
-            monthsBox.value = "";
-        } finally {
-            monthsComplete = validity;
-            // remove former recommendation
-            messageElement.innerHTML = messageText;
-            messageHeadElement.innerHTML = "";
-            testFormCompleteness();
+    var validity = true;
+    var messageText = "";
+    try {
+        if (!(monthsBox.value >= 1 && monthsBox.value <= 12)) {
+            throw "Please enter a number of months between 1 and 12.";
         }
+    } catch (message) {
+        validity = false;
+        messageText = message;
+        // remove erroneous entry from input box
+        monthsBox.value = "";
+    } finally {
+        monthsComplete = validity;
+        // remove former recommendation
+        messageElement.innerHTML = messageText;
+        messageHeadElement.innerHTML = "";
+        testFormCompleteness();
     }
-
 }
 
 /* verify that a fuel option button is selected */
